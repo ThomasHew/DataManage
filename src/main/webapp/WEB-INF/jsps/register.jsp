@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>登录</title>
+    <title>注册</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -20,20 +20,25 @@
     <link href="/DataManage/css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
-<form action="/tologin" class="form-signin" >
+<form class="form-signin" action="/tologin" >
     <img class="mb-4" src="/DataManage/img/bootstrap-solid1.jpg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">欢迎登录文件管理平台</h1>
+    <h1 class="h3 mb-3 font-weight-normal">欢迎注册文件管理平台</h1>
     <label class="sr-only">用户名:</label>
     <input type="text" class="form-control" name="userName" placeholder="Username" required="" autofocus="">
-    <br>
     <label class="sr-only">密码:</label>
     <input type="password" class="form-control" name="userPwd" placeholder="Password" required="">
-    <input type="radio" name="isAdminUser" value="0" checked>学生
-    <input type="radio" name="isAdminUser" value="1">管理员
+    <label class="sr-only">密码:</label>
+    <input type="password" class="form-control" name="userPwd" placeholder="Password again" required="">
+    <label class="sr-only">班级:</label>
+    <input type="text" class="form-control" name="ClassName" placeholder="Class" required="">
+    <label class="sr-only">小组:</label>
+    <input type="text" class="form-control" name="groupName" placeholder="group name" required="">
+    <label class="sr-only">联系方式:</label>
+    <input type="text" class="form-control" name="TelNumber" placeholder="telphone number" required="">
     <br>
-    还没有账号?<a class="btn btn-sm" href="http://localhost:8888/DataManage/register.html">我要注册</a>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">© java课程小组</p>
+    已经有账号?<a class="btn btn-sm" href="http://localhost:8888/DataManage/tologin.html">我要登录</a>
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     <a class="btn btn-sm" href="http://xxgc.sicau.edu.cn">信息工程学院</a>
 </form>
 

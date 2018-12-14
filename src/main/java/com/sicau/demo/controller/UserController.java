@@ -13,4 +13,9 @@ public class UserController {
        return "login";
     }
 
+    @RequestMapping("/register")
+    public String register(){
+        return "register";
+    }
+
 }
