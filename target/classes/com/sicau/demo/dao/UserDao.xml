@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sicau.demo.dao.UserDao">
+    <insert id="registerUser" useGeneratedKeys="true" parameterType="com.sicau.demo.entity.User">
+        INSERT INTO `users`(
+        `user_name`,
+        `user_pwd`,
+        `user_group`,
+        `user_class`,
+        `user_tel`
+        )
+        values (
+        #{userName},
+        #{userPwd},
+        #{userClass},
+        #{userGroup},
+        #{userTel}
+        );
+    </insert>
+    <select id="findUserByNameAndPwd" parameterType="com.sicau.demo.entity.User" resultType="com.sicau.demo.entity.User">
+        SELECT
+		`id`,
+		`user_name`,
+		`user_pwd`,
+		`user_class`,
+		`user_tel`,
+		`user_group`,
+		`is_admin`
+
+		FROM
+		`users` where user_name=#{userName} and user_pwd=#{userPwd} and
+		is_admin=#{isAdmin}
+    </select>
+</mapper>

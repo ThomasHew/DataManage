@@ -33,13 +33,13 @@
 	<!--设置数据源  -->
 	<property name="dataSource" ref="dataSource"></property>
 	<!-- 别名包扫描 -->
-	<property name="typeAliasesPackage" value="com.sicau.demo.pojo"></property>
+	<property name="typeAliasesPackage" value="com.sicau.demo.entity"></property>
 	
 	</bean>
 	<!--配置mapper扫描  -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!--  设置mapper扫描包-->
-		<property name="basePackage" value="com.sicau.demo.mapper"></property>
+		<property name="basePackage" value="com.sicau.demo.dao"></property>
 	</bean>
 	<!--配置service扫描  -->
 	<context:component-scan base-package="com.sicau.demo.service"></context:component-scan>

@@ -20,7 +20,7 @@
     <link href="/DataManage/css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
-<form class="form-signin" action="/tologin" >
+<form class="form-signin" action="${pageContext.request.contextPath}/user/register.html" >
     <img class="mb-4" src="/DataManage/img/bootstrap-solid1.jpg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">欢迎注册文件管理平台</h1>
     <label class="sr-only">用户名:</label>
@@ -28,15 +28,15 @@
     <label class="sr-only">密码:</label>
     <input type="password" class="form-control" name="userPwd" placeholder="Password" required="">
     <label class="sr-only">密码:</label>
-    <input type="password" class="form-control" name="userPwd" placeholder="Password again" required="">
+    <input type="password" class="form-control" name="userPwd1" placeholder="Password again" required="">
     <label class="sr-only">班级:</label>
-    <input type="text" class="form-control" name="ClassName" placeholder="Class" required="">
+    <input type="text" class="form-control" name="userClass" placeholder="Class" required="">
     <label class="sr-only">小组:</label>
-    <input type="text" class="form-control" name="groupName" placeholder="group name" required="">
+    <input type="text" class="form-control" name="userGroup" placeholder="group name" required="">
     <label class="sr-only">联系方式:</label>
-    <input type="text" class="form-control" name="TelNumber" placeholder="telphone number" required="">
+    <input type="text" class="form-control" name="userTel" placeholder="telphone number" required="">
     <br>
-    已经有账号?<a class="btn btn-sm" href="http://localhost:8888/DataManage/tologin.html">我要登录</a>
+    已经有账号?<a class="btn btn-sm" href="${pageContext.request.contextPath}/user/tologin.html">我要登录</a>
     <br>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     <a class="btn btn-sm" href="http://xxgc.sicau.edu.cn">信息工程学院</a>

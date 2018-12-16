@@ -20,7 +20,7 @@
     <link href="/DataManage/css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
-<form action="/tologin" class="form-signin" >
+<form action="${pageContext.request.contextPath}/user/login.html" class="form-signin" >
     <img class="mb-4" src="/DataManage/img/bootstrap-solid1.jpg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">欢迎登录文件管理平台</h1>
     <label class="sr-only">用户名:</label>
@@ -28,10 +28,10 @@
     <br>
     <label class="sr-only">密码:</label>
     <input type="password" class="form-control" name="userPwd" placeholder="Password" required="">
-    <input type="radio" name="isAdminUser" value="0" checked>学生
-    <input type="radio" name="isAdminUser" value="1">管理员
+    <input type="radio" name="isAdmin" value="0" checked>学生
+    <input type="radio" name="isAdmin" value="1">管理员
     <br>
-    还没有账号?<a class="btn btn-sm" href="http://localhost:8888/DataManage/register.html">我要注册</a>
+    还没有账号?<a class="btn btn-sm" href="${pageContext.request.contextPath}/user/toregister.html">我要注册</a>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">© java课程小组</p>
     <a class="btn btn-sm" href="http://xxgc.sicau.edu.cn">信息工程学院</a>
