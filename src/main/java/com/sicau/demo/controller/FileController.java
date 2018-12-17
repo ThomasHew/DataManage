@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import java.util.Random;
 
 @Controller
 @RequestMapping("file")
+@SessionAttributes("queryCondition")
 public class FileController {
     @Autowired
     private FileService fileService;
@@ -32,13 +34,15 @@ public class FileController {
     public String page(HttpServletRequest request, QueryBean queryBean, QueryCondition queryCondition){
 
         if (request.getSession().getAttribute("querycondition")==null){
+           
             request.getSession().setAttribute("querycondition",queryCondition);
         }
 
-        QueryCondition querycondition =(QueryCondition) request.getAttribute("querycondition");
+        QueryCondition querycondition =(QueryCondition) request.getSession().getAttribute("querycondition");
 
-        queryBean.setGroupName(queryCondition.getGroupName());
-        queryBean.setTureFileName(queryCondition.getTureFileName());
+        queryBean.setGroupName(querycondition.getGroupName());
+        queryBean.setTureFileName(querycondition.getTureFileName());
+
 
         Page<FileList> page = fileService.getFileListByQueryBean(queryBean);
         request.setAttribute("page",page);

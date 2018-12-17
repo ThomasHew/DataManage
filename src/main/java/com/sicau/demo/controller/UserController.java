@@ -44,9 +44,6 @@ public class UserController {
         }
         else if(user1!=null&&user1.getIsAdmin()==0){
             //分页操作
-            if (request.getSession().getAttribute("querycondition")==null){
-                request.getSession().setAttribute("querycondition",queryCondition);
-            }
 
             QueryCondition querycondition = (QueryCondition) request.getAttribute("querycondition");
 
