@@ -1,7 +1,11 @@
 package com.sicau.demo.controller;
 
+import com.sicau.demo.entity.FileList;
 import com.sicau.demo.entity.Files;
+import com.sicau.demo.entity.QueryBean;
+import com.sicau.demo.entity.QueryCondition;
 import com.sicau.demo.service.FileService;
+import com.sicau.demo.utils.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +24,34 @@ import java.util.Random;
 @Controller
 @RequestMapping("file")
 public class FileController {
-        @Autowired
+    @Autowired
     private FileService fileService;
-        //用户上传文件
+
+    //分页
+    @RequestMapping("tofilelist")
+    public String page(HttpServletRequest request, QueryBean queryBean, QueryCondition queryCondition){
+
+        if (request.getSession().getAttribute("querycondition")==null){
+            request.getSession().setAttribute("querycondition",queryCondition);
+        }
+
+        QueryCondition querycondition =(QueryCondition) request.getAttribute("querycondition");
+
+        queryBean.setGroupName(queryCondition.getGroupName());
+        queryBean.setTureFileName(queryCondition.getTureFileName());
+
+        Page<FileList> page = fileService.getFileListByQueryBean(queryBean);
+        request.setAttribute("page",page);
+
+        return "index";
+
+    }
+
+
+
+    //用户上传文件
+
+
     @RequestMapping(value = "uploadfile",method = RequestMethod.POST)
         public String uploadFile(@RequestParam("file")MultipartFile file, Files files, HttpServletRequest request, Model model){
         //获得当前系统时间

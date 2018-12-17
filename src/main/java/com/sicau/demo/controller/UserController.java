@@ -1,20 +1,30 @@
 package com.sicau.demo.controller;
 
+import com.sicau.demo.entity.FileList;
+import com.sicau.demo.entity.QueryBean;
+import com.sicau.demo.entity.QueryCondition;
 import com.sicau.demo.entity.User;
+import com.sicau.demo.service.FileService;
 import com.sicau.demo.service.UserService;
+import com.sicau.demo.utils.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("user")
 public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    FileService fileService;
     //以下两个用于登录注册转换
     @RequestMapping("/tologin")
     public String logining(){
-        System.out.println("kkk");
+
        return "login";
     }
     @RequestMapping("/toregister")
@@ -23,7 +33,7 @@ public class UserController {
     }
     //用户登录模块
     @RequestMapping("/login")
-    public String userlogin(User user){
+    public String userlogin(User user, HttpServletRequest request, QueryBean queryBean, QueryCondition queryCondition){
         System.out.println("登陆前");
        User user1 = userService.findUserByNameAndPwd(user);
         System.out.println(user1);
@@ -33,6 +43,18 @@ public class UserController {
             return "administrator";
         }
         else if(user1!=null&&user1.getIsAdmin()==0){
+            //分页操作
+            if (request.getSession().getAttribute("querycondition")==null){
+                request.getSession().setAttribute("querycondition",queryCondition);
+            }
+
+            QueryCondition querycondition = (QueryCondition) request.getAttribute("querycondition");
+
+            queryBean.setGroupName(queryCondition.getGroupName());
+            queryBean.setTureFileName(queryCondition.getTureFileName());
+            System.out.println(queryBean);
+            Page<FileList> page = fileService.getFileListByQueryBean(queryBean);
+            request.setAttribute("page",page);
             return "index";
         }
         else {

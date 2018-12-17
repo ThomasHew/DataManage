@@ -23,4 +23,51 @@
         );
     </insert>
 
+    <!-- //获得总记录数
+   Integer getTotalFilesCount();-->
+    <select id="getTotalFilesCount" resultType="int">
+        select count(*) from files
+        <where>
+            <if test="tureFileName!=null and tureFileName!=''">
+
+                and ture_file_name LIKE '%${tureFileName}%'
+            </if>
+            <if test="groupName!=null and groupName!=''">
+                AND group_name =#{groupName}
+            </if>
+
+        </where>
+
+    </select>
+    <!-- //按条件分页查询
+
+     List<FileList> getFileListByQueryBean(QueryBean queryBean);-->
+    <select id="getFileListByQueryBean" resultType="com.sicau.demo.entity.FileList">
+        SELECT
+
+        `group_name`,
+        `ture_file_name`,
+        `upload_ip`,
+        `user_name`,
+        `upload_time`,
+        `update_time`,
+
+        `file_view`
+        FROM
+        `datamanage`.`files`
+        <where>
+            <if test="tureFileName!=null and tureFileName!=''">
+
+                and ture_file_name LIKE '%${tureFileName}%'
+            </if>
+            <if test="groupName!=null and groupName!=''">
+                and group_name=#{groupName}
+            </if>
+
+        </where>
+        order by 'upload_time' DESC
+        LIMIT #{currentRow}, #{pageSize};
+
+
+    </select>
 </mapper>
