@@ -53,6 +53,12 @@ public class FileServiceImpl implements FileService {
         return fileDao.deleteFileById(id);
     }
 
+    //修改文件详情
+    @Override
+    public boolean modifyFileById(Integer id,String fileDescription) {
+        return fileDao.modifyFileById(id,fileDescription);
+    }
+
     @Override
     public Files queryFilesById(Integer id) {
         return fileDao.queryFilesById(id);

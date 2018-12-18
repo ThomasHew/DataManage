@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,12 +35,9 @@ public class FileController {
         if (request.getSession().getAttribute("querycondition")==null){
             request.getSession().setAttribute("querycondition",queryCondition);
         }
-
         QueryCondition querycondition =(QueryCondition) request.getAttribute("querycondition");
-
         queryBean.setGroupName(queryCondition.getGroupName());
         queryBean.setTureFileName(queryCondition.getTureFileName());
-
         Page<FileList> page = fileService.getFileListByQueryBean(queryBean);
         request.setAttribute("page",page);
 
@@ -54,8 +48,6 @@ public class FileController {
 
 
     //用户上传文件
-
-
     @RequestMapping(value = "uploadfile",method = RequestMethod.POST)
         public String uploadFile(@RequestParam("file")MultipartFile file, Files files, HttpServletRequest request, Model model){
         //获得当前系统时间
@@ -85,7 +77,7 @@ public class FileController {
         catch (Exception e){
             e.printStackTrace();
         }
-        return "index";
+        return "redirect:/file/tofilelist.html";
         }
     //文件下载
     @RequestMapping("download")
@@ -122,21 +114,43 @@ public class FileController {
 
     //删除文件
     @RequestMapping("deletefile")
-    public String Deletefile(HttpServletRequest request,Integer id){
+    @ResponseBody
+    public String Deletefile(HttpServletResponse response,HttpServletRequest request,Integer id){
+        System.out.println("这是ID"+id);
         String path = request.getServletContext().getRealPath("/WEB-INF/upload");
         Files files1 = fileService.queryFilesById(id);
         File file = new File(path + File.separator + files1.getCustomizeFileName());
         file.delete();
-        fileService.deleteFileById(id);
+       boolean flag1 = fileService.deleteFileById(id);
+        System.out.println(flag1);
+        try {
+            fileService.deleteFileById(id);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         return "index";
     }
 
     //修改文件
     @RequestMapping("updatefile")
-    public String Updatefile(Integer id){
-
-        return "index";
+    public String Updatefile(Integer id,String fileDescription){
+        System.out.println("修改前");
+        boolean flag2 = fileService.modifyFileById(id,fileDescription);
+        System.out.println(id+fileDescription);
+        System.out.println("修改后");
+    if (flag2)
+        System.out.println("文件详情更改成功");
+        return "redirect:/file/tofilelist.html";
     }
+    //跳转到文件详情页面，可进行文件描述的修改
+    @RequestMapping("toupdatefile")
+    public String Toupdatefile(HttpServletRequest request,Integer id){
+       Files files1 = fileService.queryFilesById(id);
+
+        request.setAttribute("checkfile",files1);
+        return "modifyfile";
+    }
+
 
             //跳转到上传文件页面
     @RequestMapping("touploadfile")

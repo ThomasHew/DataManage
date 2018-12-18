@@ -71,7 +71,11 @@
    <!-- //查询文件通过id-->
     <select id="queryFilesById" resultType="com.sicau.demo.entity.Files">
         SELECT
-
+        `id`,
+        `user_name`,
+        `upload_time`,
+        `file_view`,
+        `group_name`,
         `ture_file_name`,
         `customize_file_name`
         FROM
@@ -95,7 +99,11 @@
 FROM
   `files`
 WHERE `id` = #{id}
-
-
 	</delete>
+    <update id="modifyFileById">
+      update `files`
+      SET
+  `file_description` = #{fileDescription}
+WHERE `id` = #{id}
+    </update>
 </mapper>

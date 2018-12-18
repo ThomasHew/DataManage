@@ -3,6 +3,7 @@ package com.sicau.demo.dao;
 import com.sicau.demo.entity.FileList;
 import com.sicau.demo.entity.Files;
 import com.sicau.demo.entity.QueryBean;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,4 +26,7 @@ public interface FileDao {
 
     //删除文件通过id
     boolean deleteFileById(Integer id);
+
+    //修改文件
+    boolean modifyFileById(@Param("id")Integer id, @Param("fileDescription")String fileDescription);
 }

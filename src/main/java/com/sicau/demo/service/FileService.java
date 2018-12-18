@@ -23,4 +23,7 @@ public interface FileService {
     //删除文件通过id
     boolean deleteFileById(Integer id);
 
+    //修改文件
+    boolean modifyFileById(Integer id,String fileDescription);
+
 }

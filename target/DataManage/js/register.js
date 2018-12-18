@@ -157,10 +157,9 @@ function checkfileName() {
 
 //删除资料
 function deletefile(fileuserName,id,userName,isAdmin) {
-	
 	if((userName == fileuserName)||(isAdmin==1)){
 	if(confirm('确定要删除该资料吗?')) {
-		$.post("/ssmdemo/files/delete.do",{"id":id},function(data){
+		$.post("/DataManage/file/deletefile.html",{"id":id},function(data){
 			alert("恭喜你删除资料成功！");
 			window.location.reload();
 		});

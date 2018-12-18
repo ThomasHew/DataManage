@@ -14,8 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Dashboard Template for Bootstrap</title>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/register.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery.form.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/jquery.gvChart-1.0.1.min.js"></script>
+    <title>文件首页</title>
     <!-- Bootstrap core CSS -->
     <link href="/DataManage/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,13 +54,14 @@
     </style>
 </head>
 <body>
+
+
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">文件管理平台</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">文件管理平台</a>
     <a class="nav-item" style="color: white">&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;欢迎你：${user.userName}</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-
-            <a class="nav-link" href="">Sign out</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/user/tologin.html">Sign out</a>
         </li>
     </ul>
 </nav>
@@ -66,7 +72,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath }/file/tofilelist.html">
+                            <a class="nav-link active" href="${pageContext.request.contextPath }/file/tofilelist.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -101,7 +107,7 @@
                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
-                            Customers
+                            Customersz
                         </a>
                     </li>
 
@@ -164,8 +170,9 @@
                             <td>${p.fileView}</td>
 
                             <td>
-                                <a href="${pageContext.request.contextPath}/file/deletefile.html?id=${p.id}" class="btn btn-sm btn-success">删除></a>
-                                <a href="${pageContext.request.contextPath}/file/updatefile.html?id=${p.id}" class="btn btn-sm btn-success">修改></a>
+                               <%--     ${pageContext.request.contextPath}/file/updatefile.html?id=${p.id}--%>
+                                <a href="javascript:;" onclick="deletefile ('${p.userName}','${p.id}','${user.userName}','${user.isAdmin}')" class="btn btn-sm btn-success">删除></a>
+                                <a href="${pageContext.request.contextPath}/file/toupdatefile.html?id=${p.id}" class="btn btn-sm btn-success">修改></a>
                                 <a href="${pageContext.request.contextPath}/file/download.html?id=${p.id}" class="btn btn-sm btn-success">下载></a>
                             </td>
                         </tr>
