@@ -34,7 +34,7 @@ public class FileController {
     public String page(HttpServletRequest request, QueryBean queryBean, QueryCondition queryCondition){
 
         if (request.getSession().getAttribute("querycondition")==null){
-           
+
             request.getSession().setAttribute("querycondition",queryCondition);
         }
 
