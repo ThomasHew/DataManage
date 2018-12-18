@@ -15,4 +15,14 @@ public interface FileDao {
 
     //按条件分页查询
     List<FileList> getFileListByQueryBean(QueryBean queryBean);
+
+    //查询文件通过ID
+    Files queryFilesById(Integer id);
+
+    //记录下载次数
+    Integer downloadcount(Integer id);
+
+
+    //删除文件通过id
+    boolean deleteFileById(Integer id);
 }

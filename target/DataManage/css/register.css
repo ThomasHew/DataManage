@@ -1,0 +1,206 @@
+body{
+    background:url("../photos/BG2.png")  no-repeat center center;
+    background-size:cover;
+    background-attachment:fixed;
+    background-color:#CCCCCC;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#uploadsuccess{
+	left:48%;
+	top:48%;
+	
+	
+}
+
+/*甯冨眬寮�濮�*/
+#login_dialog {
+    position: fixed;
+    left: 48%;
+    top: 28%;
+    background-color: #303a40;
+    width: 500px;
+    margin-left: -200px;
+    margin-top: -150px;
+    font-family: "榛戜綋";
+    /*绂佹澶嶅埗绮樿创*/
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select:none;
+}
+.register_dialog_title {
+    height: 35px;
+    line-height: 35px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.register_dialog_info {
+    float: left;
+    margin-left:10px;
+    color: #fff;/*//#fff*/
+    margin-top: 5px;
+    font-size: 20px;
+    left: 50%;
+}
+#register_dialog {
+    position: fixed;
+    left: 40%;
+    top: 40%;
+    background-color: #303a40;
+    width: 500px;
+    /* 	height: 600px; */
+    margin-left: -200px;
+    margin-top: -200px;
+    font-family: "榛戜綋";
+    -moz-user-select:none; /*鐏嫄*/
+    -webkit-user-select:none; /*webkit娴忚鍣�*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*鏃╂湡娴忚鍣�*/
+    user-select:none;
+}
+
+.register_dialog_info {
+    float: left;
+    margin-left:10px;
+    color: #fff;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.dialog_close {
+    cursor: pointer;
+    width: 40px;
+    height:40px;
+    border-radius:25px;
+    float: right;
+    line-height:40px;
+    font-size: 20px;
+    color: #d8dadb;
+    font-family: "寰蒋闆呴粦";
+    text-align: center;
+    cursor:center;
+}
+form{padding: 20px 0px;}
+ul li {list-style: none;}
+.sub {
+    text-align: center;
+}
+.sub input {
+    display: inline-block;
+    width: 300px;
+    background-color: rgb(255, 109, 11);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-family: 榛戜綋;
+    outline: none;
+    border: none;
+    margin: auto;
+}
+.dialog_close:hover {
+    background-color: #566
+}
+input[type = "submit"]:hover{cursor: pointer;}
+/*甯冨眬缁撴潫*/
+.reg-box { padding-left: 30px; }
+
+.reg-box li { line-height: 44px; width: 500px; overflow: hidden; }
+
+.reg-box li label { width: 68px; height: 50px; float: left; line-height: 50px; text-align: right; padding-right: 20px; }
+
+.reg-box li input,.reg-box li select{ padding: 6px 0; font-size: 16px; width: 296px; height: 28px; line-height: 28px; border: 1px solid #dddddd; text-indent: 0.5em; float: left; }
+
+.reg-box li select option{font-size:16px;}
+
+.registered .btn a { background: #ff7200; margin-left: 110px; }
+
+/*楠岃瘉鐮�*/
+.add { width: 128px; height: 44px; float: left; _display: inline; cursor: pointer; margin-left: 20px; }
+
+.reg-box li .sradd { width: 148px; text-indent: 4px; font-size: 14px; }
+
+.reg-box li .input-code { width: 106px; padding: 10px; font-family: Arial; font-style: italic; color: red; letter-spacing: 1px; cursor: pointer; text-align: center; text-indent: 0; }
+
+.yzm,.phoKey { background: #ff7200; text-align: center; line-height: 44px; color: #fff; }
+
+.phoKey{letter-spacing: 3px; font-size:18px;}
+
+.yzmc { background: #dddddd; text-align: center; line-height: 44px; color: #999; }
+
+.error { clear:both;display:block;color: red; padding-left: 90px; padding-bottom:5px;height:20px;float: left; font-size:12px;line-height: 20px;}
+
+input { background-color: #fff; outline: none; }
+
+.reg-box li { width: auto; }
+
+.reg-box li input.errorC, .errorC{ border: 1px solid red; }
+
+.reg-box li input.checkedN , .checkedN{ border: 1px solid #1ece6d; }
+
+
+
+
+//这是后面的
+*{font-family: 微软雅黑;}
+#reg{
+    width:665px;height:600px;
+    border:1px solid #DBDBDB;
+    margin:0 auto;padding:45px 88px;
+    margin:50px auto;
+    line-height:28px;font-size:14px;
+    position: relative;
+}
+#wel{
+    margin:30px;text-align:center;font-size:24px;
+    width:160px;height:50px;line-height:50px;
+    cursor:pointer;margin-bottom:-1px;
+    border:dashed 1px #ccc;
+}
+em{
+    font-size:14px;float:left;
+    display:inline;width:100px;
+    text-align:right;
+}
+span{
+    float:left;width:20px;
+    height:28px;color:#f01904;
+    font:15px/30px "microsoft yahei";
+}
+p{
+    line-height:20px; font-size:10px;
+    clear:left; padding-left:120px; color:#999;
+}
+input{
+    width:222px;line-height:18px;
+    padding:5px;background-color:#fff;
+    border:1px solid #cbcccc;
+}
+#regBut input{
+    width:165px;height:40px;
+    background-color:#cf0500;
+    border:none;color:#fff;cursor:pointer;
+}
+#regBut{ 
+padding-top:15px;text-align:center;
+}
+.reg1{
+    padding-top:18px;color:#333;
+    border-top:dashed 1px #ccc;
+}
+.regCon div{
+    zoom:1; overflow:hidden;padding:3px 0;
+}
+strong{
+    background-image:url('2.png');
+    display: none;
+    float:right;
+    width:30px;
+    height:30px;
+    position:absolute;overflow:hidden;
+}
+
+

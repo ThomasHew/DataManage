@@ -40,13 +40,17 @@ public class UserController {
         System.out.println("登陆后");
         if(user1!=null&&user1.getIsAdmin()==1) {
             System.out.println("登录成功");
+            request.getSession().setAttribute("user",user1);
             return "administrator";
         }
         else if(user1!=null&&user1.getIsAdmin()==0){
             //分页操作
+            if (request.getSession().getAttribute("querycondition")==null){
+                request.getSession().setAttribute("querycondition",queryCondition);
+            }
 
             QueryCondition querycondition = (QueryCondition) request.getAttribute("querycondition");
-
+            request.getSession().setAttribute("user",user1);
             queryBean.setGroupName(queryCondition.getGroupName());
             queryBean.setTureFileName(queryCondition.getTureFileName());
             System.out.println(queryBean);

@@ -108,6 +108,22 @@ public class Files {
         this.fileView = fileView;
     }
 
+    @Override
+    public String toString() {
+        return "Files{" +
+                "id=" + id +
+                ", groupName='" + groupName + '\'' +
+                ", tureFileName='" + tureFileName + '\'' +
+                ", fileDescription='" + fileDescription + '\'' +
+                ", uploadIp='" + uploadIp + '\'' +
+                ", updateTime=" + updateTime +
+                ", uploadTime=" + uploadTime +
+                ", userName='" + userName + '\'' +
+                ", customizeFileName='" + customizeFileName + '\'' +
+                ", fileView=" + fileView +
+                '}';
+    }
+
     public Files() {
     }
 }

@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/file/touploadfile.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
                                 <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
                                 <polyline points="13 2 13 9 20 9"></polyline>
@@ -120,18 +120,19 @@
                           method="post">
 
                         <div class="form-group">
-                            <label for="">文件名称</label>
-                            <input type="text" class="form-control" placeholder="输入文件名" name="tureFileName" />
+                            <input type="text" class="form-control" placeholder="按照文件名" name="tureFileName" />
 
                         </div>
                         <div class="form-group">
-                            <label for="">小组名称</label>
-                            <input type="text" class="form-control" placeholder="输入小组名" name="groupName" />
 
+                            <input type="text" class="form-control" placeholder="按照小组名" name="groupName" />
+                            <button type="submit" class="btn btn-primary">查询</button>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">查询</button>
-                    </form>
+                         <div style="position:absolute;right: 50px; width:100px; height:50px;">
+                             <a href="${pageContext.request.contextPath}/file/tofilelist.html" class="btn btn-primary">刷新</a>
+                         </div>
+                       </form>
                 </div>
             </div>
 
@@ -163,9 +164,9 @@
                             <td>${p.fileView}</td>
 
                             <td>
-                                <button class="btn btn-sm btn-primary ">修改</button>
-                                <button class="btn btn-sm btn-danger">删除</button>
-                                <button class="btn btn-sm btn-success">下载</button>
+                                <a href="${pageContext.request.contextPath}/file/deletefile.html?id=${p.id}" class="btn btn-sm btn-success">删除></a>
+                                <a href="${pageContext.request.contextPath}/file/updatefile.html?id=${p.id}" class="btn btn-sm btn-success">修改></a>
+                                <a href="${pageContext.request.contextPath}/file/download.html?id=${p.id}" class="btn btn-sm btn-success">下载></a>
                             </td>
                         </tr>
                     </c:forEach>

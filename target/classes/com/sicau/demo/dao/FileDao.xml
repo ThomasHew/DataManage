@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sicau.demo.dao.FileDao">
     <insert id="uploadFile" useGeneratedKeys="true" parameterType="com.sicau.demo.entity.Files">
         INSERT INTO `files`(
@@ -7,7 +8,7 @@
         `upload_ip`,
         `user_name`,
         `upload_time`,
-        `file_describe`,
+        `file_description`,
         `file_view`,
         `customize_file_name`
         )
@@ -19,8 +20,82 @@
         #{uploadTime},
         #{fileDescription},
         #{fileView},
-        #{customizeFileName},
+        #{customizeFileName}
         );
     </insert>
 
+    <!-- //获得总记录数
+   Integer getTotalFilesCount();-->
+    <select id="getTotalFilesCount" resultType="int">
+        select count(*) from files
+        <where>
+            <if test="tureFileName!=null and tureFileName!=''">
+
+                and ture_file_name LIKE '%${tureFileName}%'
+            </if>
+            <if test="groupName!=null and groupName!=''">
+                AND group_name =#{groupName}
+            </if>
+
+        </where>
+
+    </select>
+    <!-- //按条件分页查询
+
+     List<FileList> getFileListByQueryBean(QueryBean queryBean);-->
+    <select id="getFileListByQueryBean" resultType="com.sicau.demo.entity.FileList">
+        SELECT
+        `id`,
+        `group_name`,
+        `ture_file_name`,
+        `upload_ip`,
+        `user_name`,
+        `upload_time`,
+        `update_time`,
+        `file_view`
+        FROM
+     `files`
+        <where>
+            <if test="tureFileName!=null and tureFileName!=''">
+
+                and ture_file_name LIKE '%${tureFileName}%'
+            </if>
+            <if test="groupName!=null and groupName!=''">
+                and group_name=#{groupName}
+            </if>
+
+        </where>
+        order by 'upload_time' DESC
+        LIMIT #{currentRow}, #{pageSize};
+    </select>
+   <!-- //查询文件通过id-->
+    <select id="queryFilesById" resultType="com.sicau.demo.entity.Files">
+        SELECT
+
+        `ture_file_name`,
+        `customize_file_name`
+        FROM
+        `files`
+       where `id` = #{id}
+    </select>
+    <!--//记录下载次数-->
+    <update id="downloadcount">
+		UPDATE
+		`files`
+		SET
+		`file_view` = `file_view` + 1
+		WHERE `id` = #{id}
+		</update>
+
+
+    <!--/删除文件通过id
+    boolean deleteFileById(Integer id);-->
+    <delete id="deleteFileById">
+		DELETE
+FROM
+  `files`
+WHERE `id` = #{id}
+
+
+	</delete>
 </mapper>

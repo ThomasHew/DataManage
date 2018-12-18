@@ -42,4 +42,19 @@ public class FileServiceImpl implements FileService {
 
         return page;
     }
+
+    @Override
+    public Integer downloadcount(Integer id) {
+        return fileDao.downloadcount(id);
+    }
+
+    @Override
+    public boolean deleteFileById(Integer id) {
+        return fileDao.deleteFileById(id);
+    }
+
+    @Override
+    public Files queryFilesById(Integer id) {
+        return fileDao.queryFilesById(id);
+    }
 }

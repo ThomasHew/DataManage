@@ -8,7 +8,7 @@
         `upload_ip`,
         `user_name`,
         `upload_time`,
-        `file_describe`,
+        `file_description`,
         `file_view`,
         `customize_file_name`
         )
@@ -20,7 +20,7 @@
         #{uploadTime},
         #{fileDescription},
         #{fileView},
-        #{customizeFileName},
+        #{customizeFileName}
         );
     </insert>
 
@@ -45,6 +45,7 @@
      List<FileList> getFileListByQueryBean(QueryBean queryBean);-->
     <select id="getFileListByQueryBean" resultType="com.sicau.demo.entity.FileList">
         SELECT
+        `id`,
         `group_name`,
         `ture_file_name`,
         `upload_ip`,
@@ -53,7 +54,7 @@
         `update_time`,
         `file_view`
         FROM
-        `datamanage`.`files`
+     `files`
         <where>
             <if test="tureFileName!=null and tureFileName!=''">
 
@@ -67,4 +68,34 @@
         order by 'upload_time' DESC
         LIMIT #{currentRow}, #{pageSize};
     </select>
+   <!-- //查询文件通过id-->
+    <select id="queryFilesById" resultType="com.sicau.demo.entity.Files">
+        SELECT
+
+        `ture_file_name`,
+        `customize_file_name`
+        FROM
+        `files`
+       where `id` = #{id}
+    </select>
+    <!--//记录下载次数-->
+    <update id="downloadcount">
+		UPDATE
+		`files`
+		SET
+		`file_view` = `file_view` + 1
+		WHERE `id` = #{id}
+		</update>
+
+
+    <!--/删除文件通过id
+    boolean deleteFileById(Integer id);-->
+    <delete id="deleteFileById">
+		DELETE
+FROM
+  `files`
+WHERE `id` = #{id}
+
+
+	</delete>
 </mapper>

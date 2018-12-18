@@ -19,12 +19,4 @@ public class QueryCondition {
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
-
-    @Override
-    public String toString() {
-        return "QueryCondition{" +
-                "tureFileName='" + tureFileName + '\'' +
-                ", groupName='" + groupName + '\'' +
-                '}';
-    }
 }
