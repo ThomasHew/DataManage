@@ -30,4 +30,38 @@
 		`users` where user_name=#{userName} and user_pwd=#{userPwd} and
 		is_admin=#{isAdmin}
     </select>
+    <!--    //获得所有用户
+    List<User> getAllUsers();-->
+    <select id="getAllUsers" resultType="com.sicau.demo.entity.User">
+
+        SELECT
+  id,
+  `user_name`,
+  `user_pwd`,
+  `user_class`,
+  `user_group`,
+  `user_tel`
+
+FROM
+  `users`
+LIMIT #{currentRow}, #{pagesize};
+
+    </select>
+    <!-- //用户总数
+    Integer getUserNumber();-->
+    <select id="getUserNumber" resultType="int">
+        SELECT COUNT(*) FROM users
+
+    </select>
+    <!--  //删除用户
+    Integer deleteUser();-->
+    <delete id="deleteUser" >
+
+       DELETE
+FROM
+   `users`
+WHERE `id` = #{id};
+
+
+    </delete>
 </mapper>

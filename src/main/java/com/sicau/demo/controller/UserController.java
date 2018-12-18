@@ -41,7 +41,7 @@ public class UserController {
         if(user1!=null&&user1.getIsAdmin()==1) {
             System.out.println("登录成功");
             request.getSession().setAttribute("user",user1);
-            return "administrator";
+            return "redirect:/user/usermanage.html";
         }
         else if(user1!=null&&user1.getIsAdmin()==0){
             //分页操作
@@ -76,4 +76,25 @@ public class UserController {
         }
     }
 
+    //用户列表
+    @RequestMapping("usermanage")
+    public String userList(HttpServletRequest request){
+        int pageSize = 10;
+        int currentPage = 1;//当前页
+        String currPage = request.getParameter("currentPage");
+        if(currPage!=null) {
+            currentPage = Integer.parseInt(currPage);
+        }
+
+        Page<User> userPage = userService.findAllUserByPage(currentPage, pageSize);
+        request.setAttribute("userPage",userPage);
+        return "administrator";
+    }
+    //管理员删除用户
+    @RequestMapping("deleteuser")
+    public String deleteUser(Integer id){
+        Integer integer = userService.deleteUser(id);
+
+        return "redirect:/user/usermanage.html";
+    }
 }
