@@ -14,11 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script type="text/javascript" src="/DataManage/js/jquery.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/register.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery.form.js"></script>
     <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery.js"></script>
-    <script type="text/javascript" src="/DataManage/js/register.js"></script>
-
-    <title>文件详情</title>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/DataManage/jquery.gvChart-1.0.1.min.js"></script>
+    <title>用户管理</title>
     <!-- Bootstrap core CSS -->
     <link href="/DataManage/css/bootstrap.min.css" rel="stylesheet">
 
@@ -52,13 +54,14 @@
     </style>
 </head>
 <body>
+
+
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">文件管理平台</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">文件管理平台</a>
     <a class="nav-item" style="color: white">&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;欢迎你：${user.userName}</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-
-            <a class="nav-link" href="">Sign out</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/user/tologin.html">Sign out</a>
         </li>
     </ul>
 </nav>
@@ -104,7 +107,7 @@
                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
-                            Customers
+                            Customersz
                         </a>
                     </li>
 
@@ -115,77 +118,79 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <h2>文件查看与详情修改</h2>
+            <h2>文件列表</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-inline"
+                          action="${pageContext.request.contextPath }/file/tofilelist.html"
+                          method="post">
 
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="按照文件名" name="tureFileName" />
 
-            <div id="login_dialog" >
-                <div class="x-body">
-                    <form method="post"  action="${pageContext.request.contextPath }/file/updatefile.html?id=${checkfile.id}"/>
-                        <div class="layui-form-item">
-                            <span class="x-red">*</span>文件名称
-                            <div class="layui-input-inline">
-                                <input class="layui-input" value="${checkfile.tureFileName}"  type="text" style="width:545px;height:35px" id="tureFileName"  name="tureFileName"  readonly="readonly" />
-                                <!-- <input type="text" id="file" name="fileName" required lay-verify="required" -->
-                                <!--  autocomplete="off" readonly="readonly" class="layui-input" value=""> -->
-                            </div>
                         </div>
-                        <div class="layui-form-item">
-                            <span class="x-red">*</span>上传人
-                            <div class="layui-input-inline">
-                                <input type="text"  name="userName" style="width:545px;height:35px"  required lay-verify="required"
-                                       autocomplete="off" readonly="readonly" class="layui-input" value="${checkfile.userName}" >
-                            </div>
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="按照小组名" name="groupName" />
+                            <button type="submit" class="btn btn-primary">查询</button>
                         </div>
 
-                        <div class="layui-form-item">
-                            <span class="x-red">*</span>上传人
-
-                            <div class="layui-input-inline">
-
-                                <input type="text" style="width:545px;height:35px"  name="userName" required lay-verify="required"
-                                       autocomplete="off" readonly="readonly" class="layui-input" value="${checkfile.userName}" >
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <span class="x-red">*</span>下载次数
-
-                            <div class="layui-input-inline">
-
-                                <input type="text" style="width:545px;height:35px"  name="userName" required lay-verify="required"
-                                       autocomplete="off" readonly="readonly" class="layui-input" value="${checkfile.fileView}" >
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <span class="x-red">*</span>所属小组
-
-                            <div class="layui-input-inline">
-
-                                <input type="text" style="width:545px;height:35px"  name="userName" required lay-verify="required"
-                                       autocomplete="off" readonly="readonly" class="layui-input" value="${checkfile.groupName}" >
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <span>*</span>上传时间<br>
-                            </label>
-                            <input type="text" style="width:545px;height:35px"  name="uploadTime" required lay-verify="required"
-                                   autocomplete="off" readonly="readonly" class="layui-input" value="<fmt:formatDate value='${checkfile.uploadTime}' pattern='yyyy年MM月dd日'/>"" >
-                        </div>
-                    <div class="layui-input-block">
-                        <span class="x-red">*</span>文件描述<br>
-                        </label>
-                        <c:if test="${checkfile.userName == user.userName}">
-                            <input type="text" name="fileDescription" id="fileDescription" value="${checkfile.fileDescription }" style="width:545px; height:50px;"/>
-                            <div>
-                                </label><br>
-                                <button type="submit" style="width:545px;height:50px;color: blue" class="btn btn-default" >确认修改</button>
-                            </div>
-                        </c:if>
-                        <c:if test="${checkfile.userName != user.userName}">
-                            <input type="text" readonly="readonly" name="fileDescription" id="fileDescription" value="${checkfile.fileDescription }" style="width:545px; height:50px;"/>
-                        </c:if>
-                        </div>
+                        <%-- <div style="position:absolute;right: 50px; width:100px; height:50px;">
+                             <a href="${pageContext.request.contextPath }/file/tofilelist.html" class="btn btn-primary">刷新</a>
+                         </div>--%>
                     </form>
+                </div>
+            </div>
 
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>小组名</th>
+                        <th>资料名</th>
+                        <th>上传ip</th>
+                        <th>上传人</th>
+                        <th>创建时间</th>
+                        <th>更新时间</th>
+                        <th>浏览数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${page.list}" var="p" varStatus="v">
+                        <tr>
+                            <td>${v.index+1}</td>
+                            <td>${p.groupName}</td>
+                            <td>${p.tureFileName}</td>
+                            <td>${p.uploadIp}</td>
+                            <td>${p.userName}</td>
+                            <td>${p.uploadTime}</td>
+                            <td><fmt:formatDate type="both" value="${p.updateTime}" ></fmt:formatDate> </td>
+                            <td>${p.fileView}</td>
+
+                            <td>
+                                    <%--     ${pageContext.request.contextPath}/file/updatefile.html?id=${p.id}--%>
+                                <a href="javascript:;" onclick="deletefile ('${p.userName}','${p.id}','${user.userName}','${user.isAdmin}')" class="btn btn-sm btn-success">删除></a>
+                                <a href="${pageContext.request.contextPath}/file/toupdatefile.html?id=${p.id}" class="btn btn-sm btn-success">修改></a>
+                                <a href="${pageContext.request.contextPath}/file/download.html?id=${p.id}" class="btn btn-sm btn-success">下载></a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <div class="col-md-12 text-right">
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+
+                        <li><a href="${pageContext.request.contextPath  }/file/tofilelist.html?currentPage=${page.currentPage==1?1:page.currentPage-1}">上一页</a></li>
+
+                        <li><a href="#">第${page.currentPage}页</a></li>
+                        <li><a href="#">共${page.totalPageCount} 页</a></li>
+
+                        <li><a href="${pageContext.request.contextPath  }/file/tofilelist.html?currentPage=${page.currentPage==page.totalPageCount?page.totalPageCount:page.currentPage+1}">下一页</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
                 </div>
             </div>
         </main>

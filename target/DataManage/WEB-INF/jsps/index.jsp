@@ -135,9 +135,9 @@
                             <button type="submit" class="btn btn-primary">查询</button>
                         </div>
 
-                         <div style="position:absolute;right: 50px; width:100px; height:50px;">
-                             <a href="${pageContext.request.contextPath}/file/tofilelist.html" class="btn btn-primary">刷新</a>
-                         </div>
+                        <%-- <div style="position:absolute;right: 50px; width:100px; height:50px;">
+                             <a href="${pageContext.request.contextPath }/file/tofilelist.html" class="btn btn-primary">刷新</a>
+                         </div>--%>
                        </form>
                 </div>
             </div>

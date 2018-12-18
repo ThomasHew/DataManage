@@ -18,7 +18,7 @@
     <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery.js"></script>
     <script type="text/javascript" src="/DataManage/js/register.js"></script>
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>文件详情</title>
     <!-- Bootstrap core CSS -->
     <link href="/DataManage/css/bootstrap.min.css" rel="stylesheet">
 
@@ -120,8 +120,8 @@
 
             <div id="login_dialog" >
                 <div class="x-body">
-                    <form method="post"  action="${pageContext.request.contextPath }/file/updatefile.html?id=${checkfile.id}&fileDescription=${fileDescription}"/>
-                        <div class="layui-form-item">x`
+                    <form method="post"  action="${pageContext.request.contextPath }/file/updatefile.html?id=${checkfile.id}"/>
+                        <div class="layui-form-item">
                             <span class="x-red">*</span>文件名称
                             <div class="layui-input-inline">
                                 <input class="layui-input" value="${checkfile.tureFileName}"  type="text" style="width:545px;height:35px" id="tureFileName"  name="tureFileName"  readonly="readonly" />
@@ -165,27 +165,24 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <span class="x-red">*</span>上传时间<br>
+                            <span>*</span>上传时间<br>
                             </label>
                             <input type="text" style="width:545px;height:35px"  name="uploadTime" required lay-verify="required"
-                                   autocomplete="off" readonly="readonly" class="layui-input" value="${checkfile.uploadTime}" >
+                                   autocomplete="off" readonly="readonly" class="layui-input" value="<fmt:formatDate value='${checkfile.uploadTime}' pattern='yyyy年MM月dd日'/>"" >
                         </div>
-                        <div class="layui-form-item">
-
-                            <span class="x-red">*</span>资料简介
-                            </label>
-                            <div class="layui-input-inline">
-                        <textarea id="L_content" name="fileDescription"
-                                  placeholder="简介" style="width:545px;height:120px"  class="layui-textarea fly-editor"></textarea>
+                    <div class="layui-input-block">
+                        <span class="x-red">*</span>文件描述<br>
+                        </label>
+                        <c:if test="${checkfile.userName == user.userName}">
+                            <input type="text" name="fileDescription" id="fileDescription" value="${checkfile.fileDescription }" style="width:545px; height:50px;"/>
+                            <div>
+                                </label><br>
+                                <button type="submit" style="width:545px;height:50px;color: blue" class="btn btn-default" >确认修改</button>
                             </div>
-                            <div class="layui-form-mid layui-word-aux">
-                                <span class="x-red">*</span>
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-
-                            </label>
-                            <button type="submit" style="width:545px;height:50px;color: blue" class="btn btn-default" >确认修改</button>
+                        </c:if>
+                        <c:if test="${checkfile.userName != user.userName}">
+                            <input type="text" readonly="readonly" name="fileDescription" id="fileDescription" value="${checkfile.fileDescription }" style="width:545px; height:50px;"/>
+                        </c:if>
                         </div>
                     </form>
 

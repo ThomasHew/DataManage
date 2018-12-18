@@ -65,7 +65,7 @@
             </if>
 
         </where>
-        order by 'upload_time' DESC
+        ORDER BY  id desc
         LIMIT #{currentRow}, #{pageSize};
     </select>
    <!-- //查询文件通过id-->
@@ -73,6 +73,7 @@
         SELECT
         `id`,
         `user_name`,
+        `file_description`,
         `upload_time`,
         `file_view`,
         `group_name`,

@@ -18,7 +18,7 @@
     <script type="text/javascript" language="JavaScript" src="/DataManage/js/jquery.js"></script>
     <script type="text/javascript" src="/DataManage/js/register.js"></script>
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>文件上传页面</title>
     <!-- Bootstrap core CSS -->
     <link href="/DataManage/css/bootstrap.min.css" rel="stylesheet">
 
@@ -167,7 +167,7 @@
                             </label>
                             <div class="layui-input-inline">
                         <textarea id="L_content" name="fileDescription"
-                                  placeholder="简介" style="width:545px;height:240px"  class="layui-textarea fly-editor"></textarea>
+                                  placeholder="简介" style="width:545px;height:120px"  class="layui-textarea fly-editor"></textarea>
                             </div>
                             <div class="layui-form-mid layui-word-aux">
                                 <span class="x-red">*</span>
