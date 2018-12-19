@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: stormfang
-  Date: 2018/12/15
-  Time: 23:50
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -122,6 +116,7 @@
                     <tr>
                         <th>序号</th>
                         <th>用户名</th>
+                        <th>用户角色</th>
                         <th>班级</th>
                         <th>小组</th>
                         <th>联系方式</th>
@@ -133,6 +128,15 @@
                         <tr>
                             <td>${v.index+1}</td>
                             <td>${p.userName}</td>
+                            <td>
+                                <c:if test="${p.isAdmin == '1'}">
+                                    管理员
+                                </c:if>
+                                <c:if test="${p.isAdmin == '0'}">
+                                    普通用户
+                                </c:if>
+                            </td>
+
                             <td>${p.userClass}</td>
                             <td>${p.userGroup}</td>
                             <td>${p.userTel}</td>

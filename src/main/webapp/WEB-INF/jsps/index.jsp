@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: stormfang
-  Date: 2018/12/15
-  Time: 23:50
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -71,6 +65,18 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
+                    <c:if test="${user.isAdmin==1}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/user/usermanage.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                用户管理
+                            </a>
+                        </li>
+                    </c:if>
                     <li class="nav-item">
                             <a class="nav-link active" href="${pageContext.request.contextPath }/file/tofilelist.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
@@ -89,20 +95,6 @@
                             文件上传
                         </a>
                     </li>
-
-                    <c:if test="${user.isAdmin==1}">
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/user/usermanage.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                用户管理
-                            </a>
-                        </li>
-                    </c:if>
-
 
                 </ul>
 

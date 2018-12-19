@@ -37,6 +37,7 @@
         SELECT
   id,
   `user_name`,
+  `is_admin`,
   `user_pwd`,
   `user_class`,
   `user_group`,

@@ -29,8 +29,20 @@
 	<!-- 文件上传解析器 上传最大值=1024*1024*100 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="1048576000"></property>
-
 	</bean>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/*.html"/>
+			<mvc:mapping path="/file/*.html"/>
+			<mvc:exclude-mapping path="/user/tologin.html"/>
+			<mvc:exclude-mapping path="/user/register.html"/>
+			<mvc:exclude-mapping path="/user/login.html"/>
+			<mvc:exclude-mapping path="/user/toregister.html"/>
+			<mvc:exclude-mapping path="/file/tofilelist.html"/>
+			<bean class="com.sicau.demo.interceptor.MyInterceptor"></bean>
+		</mvc:interceptor>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
+	</mvc:interceptors>
 	<!-- 创建视图解析器 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

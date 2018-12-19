@@ -23,8 +23,8 @@ public class UserController {
     FileService fileService;
     //以下两个用于登录注册转换
     @RequestMapping("/tologin")
-    public String logining(){
-
+    public String logining(HttpServletRequest request){
+    request.getSession().invalidate();
        return "login";
     }
     @RequestMapping("/toregister")
